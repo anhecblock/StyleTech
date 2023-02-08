@@ -2,14 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyDSv0qCB7Y61Crod8l-T54HZIYvlpnFcSo',
-    authDomain: 'proyecto-final-bootcamp-18e38.firebaseapp.com',
-    databaseURL:
-        'https://proyecto-final-bootcamp-18e38-default-rtdb.firebaseio.com/',
-    projectId: 'proyecto-final-bootcamp-18e38',
-    storageBucket: 'proyecto-final-bootcamp-18e38.appspot.com',
-    messagingSenderId: '465882818232',
-    appId: '1:465882818232:web:256dae5105ee1a4f13f64d',
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
