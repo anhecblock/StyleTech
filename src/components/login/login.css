@@ -5,7 +5,6 @@
 }
 
 body {
-    font-family: 'Rounded Mplus 1c Bold';
     background-color: #f4f2f2;
     opacity: 0.8;
     background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),
@@ -42,7 +41,6 @@ body {
     border-color: #969696;
     height: 40px;
     border: 1px solid #969696;
-    font-family: 'Rounded Mplus 1c Bold';
     position: relative;
 }
 
@@ -65,7 +63,6 @@ body {
     border: 1px solid #ffffff;
     color: #ffffff;
     background-color: #f39f9f;
-    font-family: 'Rounded Mplus 1c Bold';
     height: 30px;
     justify-items: center;
     font-size: 16px;
