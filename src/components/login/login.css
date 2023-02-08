@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f2f2;
+    opacity: 0.8;
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),
+        radial-gradient(#444cf7 0.5px, #edecec 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.login {
+    background-color: #fff;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    padding: 4.5em 3em;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%);
+    text-align: center;
+    margin-top: 10em;
+    border-radius: 15px;
+}
+.login > form {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.login > form > input {
+    margin-top: 1em;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.3em 0.3em;
+    border-radius: 10px;
+    border-color: #969696;
+    height: 40px;
+    border: 1px solid #969696;
+    position: relative;
+}
+
+.login > form > label {
+    display: flex;
+    margin-top: 1em;
+}
+
+@media (max-width: 425px) {
+    .login {
+        font-size: 1.2rem;
+    }
+}
+
+.login > form > button {
+    width: 50%;
+    margin-top: 1em;
+    padding: 0.3em 0.3em;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    background-color: #f39f9f;
+    height: 30px;
+    justify-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login > p {
+    color: #000000;
+    transition: 0.3 ease-in-out;
+}
+
+.login > p > a {
+    margin-left: 0.4em;
+    color: #f47575;
+}
