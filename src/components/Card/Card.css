@@ -1,0 +1,52 @@
+.card {
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    border-inline-color: black;
+    border: 1px solid black;
+    min-height: 400px;
+    min-width: 300px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    flex-direction: column;
+}
+
+.card .product-image {
+    width: 230px;
+    margin: 20px auto;
+}
+
+.card .product-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.card .product-image img:hover {
+    transform: scale(1.1);
+}
+
+.card .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.card .product-info h4 {
+    text-align: center;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+.card .product-info h4:nth-child(2) {
+    color: grey;
+}

@@ -1,0 +1,12 @@
+.login-container {
+    background-color: #f4f2f2;
+    opacity: 0.8;
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),
+        radial-gradient(#444cf7 0.5px, #edecec 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}

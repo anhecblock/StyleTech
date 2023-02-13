@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import useUser from '../../hooks/useUser';
+import useUser from '../../Hooks/useUser';
 import './login.css';
 
 export const Login = () => {

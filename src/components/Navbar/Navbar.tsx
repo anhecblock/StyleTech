@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
-
-import logo from '../../assets/logo-center.png';
+import logo from '../../assets/logo-center .png';
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +14,9 @@ export const Navbar = () => {
             <div className={`nav-items ${isOpen && 'open'}`}>
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/products">Products</NavLink>
-                <NavLink to="/login">Login</NavLink>
+                <NavLink className="nav-login" to="/login">
+                    Login
+                </NavLink>
             </div>
             <div
                 className={`nav-toggle ${isOpen && 'open'}`}

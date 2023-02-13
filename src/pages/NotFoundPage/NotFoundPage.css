@@ -1,0 +1,23 @@
+.errorPage {
+    padding: 9rem 0;
+    max-width: 100%;
+    min-width: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 2.5em;
+    text-align: center;
+    flex: 100px;
+}
+
+a {
+    text-decoration: none;
+    color: #690f8a;
+    font-size: 2.1em;
+    cursor: pointer;
+}
