@@ -1,0 +1,43 @@
+.home-container {
+    padding: 3rem;
+    max-width: 100%;
+    min-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fondo {
+    min-width: 300px;
+    max-width: 500px;
+    width: 100%;
+    margin: 30px;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    background-color: #f39f9f;
+    height: 40px;
+    justify-content: center;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5em;
+    text-align: center;
+    flex: 100px;
+}
+
+.intro {
+    font-size: 1em;
+    text-align: center;
+    flex: 80px;
+    color: #18191f;
+}
