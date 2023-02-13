@@ -4,8 +4,8 @@ import {
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
-import { auth } from '../firebase/firebase';
-import { LoggedUser, loginUserActionCreator } from '../store/user/userSlice';
+import { auth } from '../Firebase/firebase';
+import { LoggedUser, loginUserActionCreator } from '../Store/user/userSlice';
 
 const useUser = () => {
     const navigate = useNavigate();
