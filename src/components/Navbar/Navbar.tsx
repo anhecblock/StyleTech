@@ -14,6 +14,8 @@ export const Navbar = () => {
             <div className={`nav-items ${isOpen && 'open'}`}>
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/products">Products</NavLink>
+                <NavLink to="/create">Create</NavLink>
+
                 <NavLink className="nav-login" to="/login">
                     Login
                 </NavLink>
