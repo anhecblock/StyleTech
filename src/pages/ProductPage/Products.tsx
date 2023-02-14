@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import ArticlesList from '../components/ArticlesList/ArticlesList';
-import { useArticles } from '../Hooks/useArticles';
+import ArticlesList from '../../components/ArticlesList/ArticlesList';
+import { useArticles } from '../../Hooks/useArticles';
+
 import './Products.css';
 
 const apiUrl = 'https://fakestoreapi.com/products';

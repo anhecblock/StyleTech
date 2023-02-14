@@ -6,3 +6,8 @@ export interface Product {
     category: string;
     price: number;
 }
+
+export interface ArticleFromDb extends Product {
+    name: string;
+    autor: string;
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useCallback } from 'react';
 import { useAppDispatch } from '../app/hooks';
-import { loadArticlesActionCreator } from '../Store/articles/articlesSlice';
+import { loadArticlesActionCreator } from '../store/articles/articlesSlice';
 
 export const useArticles = () => {
     const dispatch = useAppDispatch();
