@@ -7,7 +7,9 @@ export const NotFoundPage = () => {
         <div className="errorPage">
             <img src={error} alt="error" width={300} />
             <h2 className="title">PAGE NOT FOUND</h2>
-            <NavLink to={'/home'}>Go Home</NavLink>
+            <NavLink className={'errorPage__link'} to={'/home'}>
+                Go Home
+            </NavLink>
         </div>
     );
 };

@@ -15,7 +15,7 @@
     flex: 100px;
 }
 
-a {
+.errorPage__link {
     text-decoration: none;
     color: #690f8a;
     font-size: 2.1em;

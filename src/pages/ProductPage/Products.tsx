@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
-import ArticlesList from '../../components/ArticlesList/ArticlesList';
-import { useArticles } from '../../Hooks/useArticles';
+import ArticlesList from '../../components/articlesList/ArticlesList';
+import { useArticles } from '../../hooks/useArticles';
 
 import './Products.css';
-
-const apiUrl = 'https://fakestoreapi.com/products';
 
 export const Products = () => {
     const { getData } = useArticles();
     useEffect(() => {
         (async () => {
-            await getData(apiUrl);
+            await getData();
         })();
     }, [getData]);
 
