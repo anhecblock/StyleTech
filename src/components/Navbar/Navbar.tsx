@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-center .png';
+import { useAppSelector } from '../../app/hooks';
+import useUser from '../../hooks/useUser';
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const { isLogged } = useAppSelector((state) => state.user);
+    const { logoutUser } = useUser();
 
     return (
         <div className="Navbar">
@@ -14,11 +19,20 @@ export const Navbar = () => {
             <div className={`nav-items ${isOpen && 'open'}`}>
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/products">Products</NavLink>
-                <NavLink to="/create">Create</NavLink>
-
-                <NavLink className="nav-login" to="/login">
-                    Login
-                </NavLink>
+                {isLogged && (
+                    <>
+                        <NavLink to="/create">Create</NavLink>
+                        <NavLink to="/myarticles">My articles</NavLink>
+                        <NavLink to={'/products'} onClick={logoutUser}>
+                            Logout{' '}
+                        </NavLink>
+                    </>
+                )}
+                {!isLogged && (
+                    <NavLink className="nav-login" to="/login">
+                        Login
+                    </NavLink>
+                )}
             </div>
             <div
                 className={`nav-toggle ${isOpen && 'open'}`}

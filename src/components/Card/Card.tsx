@@ -1,14 +1,17 @@
 import { useAppSelector } from '../../app/hooks';
-import { Product } from '../../Interfaces/interfaces';
+import { useArticles } from '../../hooks/useArticles';
+import { ArticleFromDb, Product } from '../App/App';
 
 import './Card.css';
 
 interface CardProps {
-    article: Product;
+    article: Product | ArticleFromDb;
 }
 
 export const Card = ({ article }: CardProps): JSX.Element => {
-    const { isLogged } = useAppSelector((state) => state.user);
+    const { isLogged, uid } = useAppSelector((state) => state.user);
+    const { deleteArticle } = useArticles();
+
     return (
         <div className="card">
             <div className="product-image">
@@ -22,9 +25,14 @@ export const Card = ({ article }: CardProps): JSX.Element => {
 
             {isLogged && (
                 <div className="button-container">
-                    <button>Añadir</button>
-                    <button>Eliminar</button>
-                    <button>Editar</button>
+                    {(article as ArticleFromDb).autor === uid && (
+                        <button
+                            className="button-container__delete"
+                            onClick={async () => deleteArticle(article.id)}
+                        >
+                            Delete
+                        </button>
+                    )}
                 </div>
             )}
         </div>

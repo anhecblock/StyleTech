@@ -1,4 +1,4 @@
-import { Product } from '../Interfaces/interfaces';
+import { Product } from '../interfaces/interfaces';
 import bufanda from '../assets/bufanda.png';
 import zapato from '../assets/zapato.png';
 import gorra from '../assets/gorra.png';

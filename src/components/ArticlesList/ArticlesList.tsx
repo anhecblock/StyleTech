@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../app/hooks';
-import { Card } from '../Card/Card';
+import { Card } from '../card/Card';
 import './ArticlesList.css';
 
 const ArticlesList = (): JSX.Element => {

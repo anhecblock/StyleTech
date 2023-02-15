@@ -2,10 +2,16 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
 } from 'firebase/auth';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAppDispatch } from '../app/hooks';
-import { auth } from '../Firebase/firebase';
-import { LoggedUser, loginUserActionCreator } from '../store/user/userSlice';
+import { auth } from '../firebase/firebase';
+import {
+    LoggedUser,
+    loginUserActionCreator,
+    logOutUserActionCreator,
+} from '../store/user/userSlice';
 
 const useUser = () => {
     const navigate = useNavigate();
@@ -24,12 +30,11 @@ const useUser = () => {
             const token = await auth.currentUser?.getIdToken();
 
             dispatch(loginUserActionCreator(user));
+            toast.success('Logged in.');
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             localStorage.setItem('token', token!);
-            navigate('/');
-        } catch (error) {
-            console.error(error);
-        }
+            navigate('/products');
+        } catch (error) {}
     };
 
     const userRegister = async (email: string, password: string) => {
@@ -41,12 +46,19 @@ const useUser = () => {
             );
             const user = userCredential.user;
             console.log('usuario registrado', user);
-        } catch (error) {
-            console.error(error);
-        }
+        } catch (error) {}
     };
 
-    return { userLogin, userRegister };
+    const logoutUser = useCallback(async () => {
+        try {
+            dispatch(logOutUserActionCreator());
+            toast.success('Logged out.');
+        } catch (error) {
+            toast.error('Error with the log out.');
+        }
+    }, [dispatch]);
+
+    return { userLogin, userRegister, logoutUser };
 };
 
 export default useUser;
