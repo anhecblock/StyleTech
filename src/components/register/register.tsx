@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import useUser from '../../Hooks/useUser';
+import useUser from '../../hooks/useUser';
 
 const Register = (): JSX.Element => {
     const [user, setUser] = useState({ email: '', password: '' });

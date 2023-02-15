@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Product } from '../App/App';
+import { useAppSelector } from '../../app/hooks';
+import { useArticles } from '../../hooks/useArticles';
 import './ArticleFormStyle.css';
 
 const initialArticle: Product = {
@@ -13,6 +15,14 @@ const initialArticle: Product = {
 
 const ArticleForm = (): JSX.Element => {
     const [article, setArticle] = useState(initialArticle);
+    const { uid } = useAppSelector((state) => state.user);
+    const { createArticle } = useArticles();
+
+    const handleSubmit = async () => {
+        if (await createArticle(`${uid}`, article)) {
+            setArticle(initialArticle);
+        }
+    };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setArticle({ ...article, [event.target.id]: event.target.value });
@@ -23,6 +33,7 @@ const ArticleForm = (): JSX.Element => {
                 onSubmit={(event) => {
                     event.preventDefault();
                     console.log(article);
+                    handleSubmit();
                 }}
             >
                 <h1>Create Article</h1>
@@ -65,7 +76,7 @@ const ArticleForm = (): JSX.Element => {
                     value={article.category}
                     onChange={handleChange}
                 />
-                <button>Create</button>
+                <button type="submit">Create</button>
             </form>
         </div>
     );

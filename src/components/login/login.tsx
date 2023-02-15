@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import useUser from '../../Hooks/useUser';
+import useUser from '../../hooks/useUser';
 import './login.css';
 
 export const Login = () => {
@@ -43,7 +43,10 @@ export const Login = () => {
             </form>
             <p>
                 Don't have an account yet?
-                <NavLink to="/register"> Register</NavLink>
+                <NavLink className="link" to="/register">
+                    {' '}
+                    Register
+                </NavLink>
             </p>
         </div>
     );
