@@ -12,6 +12,10 @@ import {
     loadFavouritesActionCreator,
 } from '../store/favouriteArticles/favouriteArticles';
 import { toast } from 'react-toastify';
+import {
+    closeLoadingModalActionCreator,
+    openLoadingModalActionCreator,
+} from '../store/ui/uiSlice';
 
 const apiUrl =
     'https://proyecto-final-bootcamp-18e38-default-rtdb.firebaseio.com/products.json';
@@ -26,8 +30,10 @@ export const useArticles = () => {
 
     const getData = useCallback(async () => {
         try {
+            dispatch(openLoadingModalActionCreator());
             const { data } = await axios.get(publicApi);
             const firebaseResponse = await axios.get(apiUrl);
+            dispatch(closeLoadingModalActionCreator());
 
             if (!firebaseResponse.data) {
                 const products: ArticleFromDb[] = [];
@@ -38,6 +44,7 @@ export const useArticles = () => {
                         private: products as ArticleFromDb[],
                     })
                 );
+
                 if (article.length < 1) {
                     toast.success('Articles added');
                 }

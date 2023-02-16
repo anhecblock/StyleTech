@@ -16,22 +16,27 @@ export const Navbar = () => {
             <span className="nav-logo">
                 <img src={logo} alt="logo"></img>
             </span>
-            <div className={`nav-items ${isOpen && 'open'}`}>
+            <div
+                onClick={() => setIsOpen(!isOpen)}
+                className={`nav-items ${isOpen && 'open'}`}
+            >
                 <NavLink to="/home">Home</NavLink>
                 <NavLink to="/products">Products</NavLink>
                 {isLogged && (
                     <>
                         <NavLink to="/create">Create</NavLink>
                         <NavLink to="/myarticles">My articles</NavLink>
-                        <NavLink to={'/products'} onClick={logoutUser}>
+                        <NavLink to={'/home'} onClick={logoutUser}>
                             Logout{' '}
                         </NavLink>
                     </>
                 )}
                 {!isLogged && (
-                    <NavLink className="nav-login" to="/login">
-                        Login
-                    </NavLink>
+                    <button className="login-button">
+                        <NavLink className="nav-login" to="/login">
+                            Login
+                        </NavLink>
+                    </button>
                 )}
             </div>
             <div

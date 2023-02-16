@@ -5,6 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import { articleReducer } from '../store/articles/articlesSlice';
 import { favouriteReducer } from '../store/favouriteArticles/favouriteArticles';
+import { uiDataReducer } from '../store/ui/uiSlice';
 import { userReducer } from '../store/user/userSlice';
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
         user: userReducer,
         articles: articleReducer,
         favourites: favouriteReducer,
+        ui: uiDataReducer,
     },
 });
 
