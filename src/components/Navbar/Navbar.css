@@ -5,6 +5,7 @@
     align-items: center;
     background-color: white;
     border-bottom: 2px solid rgb(239, 235, 235);
+    padding-right: 30px;
 }
 
 .Navbar > .nav-logo {
@@ -47,26 +48,10 @@
     margin: 25px;
 }
 
-.nav-items > button > .nav-login {
-    all: unset;
-    color: white;
-    background-color: #f39f9f;
-    padding: 10px;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    border-radius: 15px;
-}
-.login-button {
-    all: unset;
-    width: 100%;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
 @media (max-width: 700px) {
+    .Navbar {
+        padding-right: 0;
+    }
     .Navbar > .nav-items {
         position: fixed;
         align-items: center;
@@ -79,6 +64,7 @@
         width: 35%;
         border-radius: 2px;
         transform: translateX(100%);
+        padding-bottom: 20px;
     }
 
     .Navbar > .nav-items > a::before {
@@ -133,4 +119,36 @@
     .nav-toggle.open > .bar::after {
         transform: rotate(-45deg) translate(26px, 26px);
     }
+
+    .nav-items > button > .nav-login {
+        all: unset;
+        color: white;
+        background-color: #f39f9f;
+        padding: 10px;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        border-radius: 15px;
+    }
+    .login-button {
+        all: unset;
+        width: 100%;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
+
+.login-button {
+    all: unset;
+}
+
+.login-button > a {
+    padding: 10px 0;
+    color: #474a57;
+    font-size: 16px;
+    text-decoration: none;
+    position: relative;
+    opacity: 0.9;
 }
