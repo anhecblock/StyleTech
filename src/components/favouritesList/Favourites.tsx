@@ -3,7 +3,7 @@ import { useAppSelector } from '../../app/hooks';
 import { useArticles } from '../../hooks/useArticles';
 import './Favourites.css';
 
-import { Card } from '../card/Card';
+import { Card } from '../Card/Card';
 
 const FavouritesList = (): JSX.Element => {
     const articles = useAppSelector((state) => state.favourites);
