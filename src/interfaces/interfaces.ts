@@ -11,3 +11,7 @@ export interface ArticleFromDb extends Product {
     name: string;
     autor: string;
 }
+
+export interface UiData {
+    isLoading: boolean;
+}
