@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useArticles } from '../../hooks/useArticles';
+import './Favourites.css';
 
 import { Card } from '../card/Card';
 

@@ -12,6 +12,10 @@ import ArticleForm from '../../components/Form/ArticleForm';
 
 import FavouritesList from '../favouritesList/Favourites';
 
+import { useAppSelector } from '../../app/hooks';
+import Loader from '../navbar/loader/Loader';
+import { MyArticlesPage } from '../../pages/MyArticlesPage/MyArticles';
+
 export interface Product {
     id: string;
     image: string;
@@ -27,6 +31,8 @@ export interface ArticleFromDb extends Product {
 }
 
 export const App = () => {
+    const { isLoading } = useAppSelector((state) => state.ui);
+
     return (
         <>
             <ToastContainer
@@ -41,6 +47,8 @@ export const App = () => {
                 pauseOnHover
                 theme="light"
             />
+            {isLoading && <Loader />}
+
             <Navbar />
             <Routes>
                 <Route path="/" element={<Navigate to={'/home'} />} />
@@ -49,7 +57,7 @@ export const App = () => {
                 <Route path="/create" element={<ArticleForm />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/myarticles" element={<FavouritesList />} />
+                <Route path="/myarticles" element={<MyArticlesPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </>
