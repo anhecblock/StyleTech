@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from '../login/login';
-import { Navbar } from '../navbar/Navbar';
+import { Navbar } from '../Navbar/Navbar';
 import Register from '../register/register';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,10 +10,8 @@ import { Home } from '../../pages/Home/HomePage';
 import { Products } from '../../pages/ProductPage/Products';
 import ArticleForm from '../../components/Form/ArticleForm';
 
-import FavouritesList from '../favouritesList/Favourites';
-
 import { useAppSelector } from '../../app/hooks';
-import Loader from '../navbar/loader/Loader';
+import Loader from '../Navbar/loader/Loader';
 import { MyArticlesPage } from '../../pages/MyArticlesPage/MyArticles';
 
 export interface Product {
