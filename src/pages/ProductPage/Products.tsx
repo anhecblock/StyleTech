@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import ArticlesList from '../../components/articlesList/ArticlesList';
+
 import { useArticles } from '../../hooks/useArticles';
 
 import './Products.css';
