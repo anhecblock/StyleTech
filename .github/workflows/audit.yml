@@ -25,9 +25,6 @@ jobs:
         with:
           must_deny: 'node_modules/'
 
-      - name: Install modules
-        run: npm ci
-
       - name: ESLint validation
         run: npx eslint --ignore-path .gitignore .
 
