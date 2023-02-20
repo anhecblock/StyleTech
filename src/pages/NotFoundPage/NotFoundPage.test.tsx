@@ -7,6 +7,7 @@ import { NotFoundPage } from './NotFoundPage';
 describe('Given a NotfFoundComponent function', () => {
     describe('when the page is rendered', () => {
         beforeEach(() => {
+            // eslint-disable-next-line testing-library/no-render-in-setup
             render(
                 <BrowserRouter>
                     <Provider store={store}>

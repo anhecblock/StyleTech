@@ -1,10 +1,10 @@
-import LoaderStyled from './loaderStyled';
+import './loaderStyled.css';
 
 const Loader = () => {
     return (
-        <LoaderStyled>
-            <span className="loader"></span>
-        </LoaderStyled>
+        <div className="loader">
+            <span className="loader__spinner"> </span>
+        </div>
     );
 };
 
