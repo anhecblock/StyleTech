@@ -14,7 +14,7 @@ jest.mock('react-router-dom', () => ({
 jest.mock('firebase/auth', () => ({
     ...jest.requireActual('firebase/auth'),
     signInWithEmailAndPassword: (
-        auth: any,
+        auth: unknown,
         email: string,
         password: string
     ) => {
@@ -46,11 +46,11 @@ describe('Login', () => {
         );
 
         fireEvent.change(screen.getByPlaceholderText('Enter your email'), {
-            target: { value: 'ali_khan87@live.com' },
+            target: { value: 'abs.ilici@gmail.com' },
         });
 
         fireEvent.change(screen.getByPlaceholderText('Enter your password'), {
-            target: { value: 'Aliali212@' },
+            target: { value: '123456' },
         });
 
         fireEvent.click(screen.getByRole('button'));
@@ -63,16 +63,16 @@ describe('Login', () => {
 
 const mockUser = {
     user: {
-        uid: 'dy7iUnJZRYNe0pbORRiow5yEI3w2',
-        email: 'ali_khan87@live.com',
+        uid: 'Y4ItE1Y7FYOZcD4Fj9tuSrGKfAT2',
+        email: 'abs.ilici@gmail.com',
         emailVerified: false,
         isAnonymous: false,
         providerData: [
             {
                 providerId: 'password',
-                uid: 'ali_khan87@live.com',
+                uid: 'abs.ilici@gmail.com',
                 displayName: null,
-                email: 'ali_khan87@live.com',
+                email: 'abs.ilici@gmail.com',
                 phoneNumber: null,
                 photoURL: null,
             },
@@ -86,14 +86,14 @@ const mockUser = {
         },
         createdAt: '1676957523695',
         lastLoginAt: '1676968804978',
-        apiKey: 'AIzaSyDSv0qCB7Y61Crod8l-T54HZIYvlpnFcSo',
+        apiKey: 'REACT_APP_FIREBASE_API_KEY',
         appName: '[DEFAULT]',
     },
     providerId: null,
     _tokenResponse: {
         kind: 'identitytoolkit#VerifyPasswordResponse',
-        localId: 'dy7iUnJZRYNe0pbORRiow5yEI3w2',
-        email: 'ali_khan87@live.com',
+        localId: 'Y4ItE1Y7FYOZcD4Fj9tuSrGKfAT2',
+        email: 'abs.ilici@gmail.com',
         displayName: '',
         idToken:
             'eyJhbGciOiJSUzI1NiIsImtpZCI6IjE1YzJiNDBhYTJmMzIyNzk4NjY2YTZiMzMyYWFhMDNhNjc3MzAxOWIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJveWVjdG8tZmluYWwtYm9vdGNhbXAtMThlMzgiLCJhdWQiOiJwcm95ZWN0by1maW5hbC1ib290Y2FtcC0xOGUzOCIsImF1dGhfdGltZSI6MTY3Njk2ODkwNywidXNlcl9pZCI6ImR5N2lVbkpaUllOZTBwYk9SUmlvdzV5RUkzdzIiLCJzdWIiOiJkeTdpVW5KWlJZTmUwcGJPUlJpb3c1eUVJM3cyIiwiaWF0IjoxNjc2OTY4OTA3LCJleHAiOjE2NzY5NzI1MDcsImVtYWlsIjoiYWxpX2toYW44N0BsaXZlLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhbGlfa2hhbjg3QGxpdmUuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.vurcDQ8J3SHnAfZ3C_d_FVua0AeLNmdt1ynbIGkrLAQUNUsgABn9WtrWkgZ1cyJ86C9np810pj1B_S0ubG4SpoOS1kaTra44ho6JSMOacz-U7L2yc-LYO1GmtBvLIAFf6ny4AczWqICvQZsgs2qVNdWkq_jYZKvxB844CsRVfVroyXaYWFKWUD7jkiti8BkMv_Ikd8O15DOMy-DKS1v83Ch_6JgLKTT5FXaV7oy39WuVKrGeL-bhMqXLLnYqxSqrzlPH5jGHNkYq9rTg8aOFFv9eGVBHJQiyllwaidgFIJg5N2FHS0EOSAeaATAoinKuMBMEvcm9o9PchvLHIc1JYg',
