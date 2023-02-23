@@ -86,7 +86,7 @@ const mockUser = {
         },
         createdAt: '1676957523695',
         lastLoginAt: '1676968804978',
-        apiKey: 'REACT_APP_FIREBASE_API_KEY',
+        apiKey: process.env.REACT_APP_APIKEY,
         appName: '[DEFAULT]',
     },
     providerId: null,
