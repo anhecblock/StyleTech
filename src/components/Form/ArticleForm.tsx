@@ -3,6 +3,7 @@ import { Product } from '../App/App';
 import { useAppSelector } from '../../app/hooks';
 import { useArticles } from '../../hooks/useArticles';
 import './ArticleFormStyle.css';
+import { useNavigate } from 'react-router-dom';
 
 const initialArticle: Product = {
     image: '',
@@ -17,10 +18,12 @@ const ArticleForm = (): JSX.Element => {
     const [article, setArticle] = useState(initialArticle);
     const { uid } = useAppSelector((state) => state.user);
     const { createArticle } = useArticles();
+    const navigator = useNavigate();
 
     const handleSubmit = async () => {
         if (await createArticle(`${uid}`, article)) {
             setArticle(initialArticle);
+            navigator('/products');
         }
     };
 
@@ -37,7 +40,7 @@ const ArticleForm = (): JSX.Element => {
                 }}
             >
                 <h1>Create Article</h1>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="title">Name</label>
                 <input
                     id="title"
                     type="text"

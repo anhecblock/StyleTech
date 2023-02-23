@@ -17,7 +17,7 @@ export const store = configureStore({
     },
 });
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     user: userReducer,
     articles: articleReducer,
 });
@@ -33,3 +33,5 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+export type AppStore = ReturnType<typeof setupStore>;
+export type ReducerState = ReturnType<typeof rootReducer>;
