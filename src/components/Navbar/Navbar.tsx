@@ -17,6 +17,7 @@ export const Navbar = () => {
                 <img src={logo} alt="logo"></img>
             </span>
             <div
+                data-testid="nav-container"
                 onClick={() => setIsOpen(!isOpen)}
                 className={`nav-items ${isOpen && 'open'}`}
             >
@@ -40,6 +41,7 @@ export const Navbar = () => {
                 )}
             </div>
             <div
+                data-testid="nav-toggle-container"
                 className={`nav-toggle ${isOpen && 'open'}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
