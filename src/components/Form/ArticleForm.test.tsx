@@ -1,22 +1,9 @@
-import { screen, cleanup, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { renderWithProviders } from '../../utils/test-utils';
 import ArticleForm from './ArticleForm';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
-import { ToastContainer } from 'react-toastify';
 
-const apiUrl =
-    'https://proyecto-final-bootcamp-18e38-default-rtdb.firebaseio.com/products.json';
-const server = setupServer(
-    rest.post(apiUrl, (_, res, ctx) => {
-        return res(ctx.status(200));
-    })
-);
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
-afterEach(() => cleanup());
+import { ToastContainer } from 'react-toastify';
 
 describe('Article Form', () => {
     test('Should change input values on edit and submit form', async () => {

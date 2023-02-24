@@ -41,7 +41,7 @@ export const useArticles = () => {
                 dispatch(
                     loadArticlesActionCreator({
                         public: data,
-                        private: products as ArticleFromDb[],
+                        private: products,
                     })
                 );
 
