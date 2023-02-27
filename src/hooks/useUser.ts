@@ -45,7 +45,9 @@ const useUser = () => {
                 password
             );
             const user = userCredential.user;
+            toast.success('Successful registration');
             console.log('usuario registrado', user);
+            navigate('/login');
         } catch (error) {}
     };
 
