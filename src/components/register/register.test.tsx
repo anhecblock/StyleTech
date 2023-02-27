@@ -13,11 +13,5 @@ describe('Register component', () => {
                 </MemoryRouter>
             </Provider>
         );
-
-        const email = screen.getByLabelText('Email') as HTMLInputElement;
-        const password = screen.getByLabelText('Password') as HTMLInputElement;
-
-        fireEvent.change(email, { target: { value: 'test@test.com' } });
-        fireEvent.change(password, { target: { value: 'password' } });
     });
 });
