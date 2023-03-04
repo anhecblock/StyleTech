@@ -13,6 +13,7 @@ interface WrapperProps {
 
 jest.mock('react-toastify');
 jest.mock('axios');
+
 const mockStore = configureStore([thunk]);
 
 beforeEach(() => {
@@ -20,6 +21,15 @@ beforeEach(() => {
     (axios.post as jest.MockedFunction<typeof axios.post>).mockClear();
     (axios.delete as jest.MockedFunction<typeof axios.delete>).mockClear();
 });
+
+const renderUseArticles = (store: ReturnType<typeof mockStore>) => {
+    const wrapper = ({ children }: WrapperProps) => (
+        <Provider store={store}>{children}</Provider>
+    );
+    return renderHook(() => useArticles(), {
+        wrapper,
+    });
+};
 
 describe('getData', () => {
     it('should load public data if no data from firebase', async () => {
@@ -40,15 +50,8 @@ describe('getData', () => {
         );
         const mockToastSuccess = jest.spyOn(toast, 'success');
         const store = mockStore({ articles: [] });
-        const wrapper = ({ children }: WrapperProps) => (
-            <Provider store={store}>{children}</Provider>
-        );
-        const { result } = renderHook(() => useArticles(), {
-            wrapper,
-        });
-
+        const { result } = renderUseArticles(store);
         await result.current.getData();
-
         expect(axios.get).toHaveBeenCalledTimes(2);
         expect(mockToastSuccess).toHaveBeenCalled();
     });
@@ -61,21 +64,13 @@ describe('CreateArticle', () => {
         ).mockResolvedValueOnce({ status: 200 });
         const mockToastSuccess = jest.spyOn(toast, 'success');
         const store = mockStore({ articles: mockData });
-        const wrapper = ({ children }: WrapperProps) => (
-            <Provider store={store}>{children}</Provider>
-        );
-        const { result } = renderHook(() => useArticles(), {
-            wrapper,
-        });
-
+        const { result } = renderUseArticles(store);
         // Create Article
         expect(result.current.createArticle).toBeDefined();
-
         const success = await result.current.createArticle(
             'John Doe',
             mockData[1]
         );
-
         expect(success).toBe(true);
         expect(axios.post).toHaveBeenCalledTimes(1);
         expect(mockToastSuccess).toHaveBeenCalledTimes(1);
@@ -87,22 +82,13 @@ describe('CreateArticle', () => {
         ).mockResolvedValueOnce({ status: 201 });
         const mockToastError = jest.spyOn(toast, 'error');
         const store = mockStore({ articles: mockData });
-        const wrapper = ({ children }: WrapperProps) => (
-            <Provider store={store}>{children}</Provider>
-        );
-        const { result } = renderHook(() => useArticles(), {
-            wrapper,
-        });
-
+        const { result } = renderUseArticles(store);
         result.current.getData();
-
         expect(axios.get).toHaveBeenCalledTimes(1);
-
         const success = await result.current.createArticle(
             'John Doe',
             mockData[1]
         );
-
         expect(success).toBe(false);
         expect(axios.post).toHaveBeenCalledTimes(1);
         expect(mockToastError).toHaveBeenCalled();
@@ -122,14 +108,11 @@ describe('addFav', () => {
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         await result.current.getData();
         await result.current.addFav(mockData[1], 'John Doe');
-
         expect(axios.post).toHaveBeenCalledTimes(1);
         expect(mockToastError).toHaveBeenCalled();
     });
-
     it('Should show success response', async () => {
         (
             axios.post as jest.MockedFunction<typeof axios.post>
@@ -142,18 +125,13 @@ describe('addFav', () => {
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         result.current.getData();
-
         expect(axios.get).toHaveBeenCalledTimes(1);
-
         await result.current.addFav(mockData[1], 'John Doe');
-
         expect(axios.post).toHaveBeenCalledTimes(1);
         expect(mockToastSuccess).toHaveBeenCalledTimes(1);
     });
 });
-
 describe('getFav', () => {
     it('Should show success response', async () => {
         (axios.get as jest.MockedFunction<typeof axios.get>).mockResolvedValue({
@@ -166,9 +144,7 @@ describe('getFav', () => {
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         await result.current.getFav('1');
-
         expect(axios.get).toHaveBeenCalledTimes(1);
     });
 });
@@ -185,14 +161,11 @@ describe('deleteArticle', () => {
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         await result.current.getData();
         await result.current.deleteArticle('1');
-
         expect(axios.delete).toHaveBeenCalledTimes(1);
         expect(mockToastError).toHaveBeenCalled();
     });
-
     it('Should show error on failing', async () => {
         (
             axios.delete as jest.MockedFunction<typeof axios.delete>
@@ -205,15 +178,12 @@ describe('deleteArticle', () => {
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         await result.current.getData();
         await result.current.deleteArticle('1');
-
         expect(axios.delete).toHaveBeenCalledTimes(1);
         expect(mockToastSSuccess).toHaveBeenCalled();
     });
 });
-
 const mockData = [
     {
         id: '1',

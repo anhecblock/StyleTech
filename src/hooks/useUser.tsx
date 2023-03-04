@@ -34,7 +34,9 @@ const useUser = () => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             localStorage.setItem('token', token!);
             navigate('/products');
-        } catch (error) {}
+        } catch (error) {
+            toast.error('Unregistered user, please register');
+        }
     };
 
     const userRegister = async (email: string, password: string) => {
