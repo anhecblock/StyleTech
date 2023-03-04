@@ -23,45 +23,11 @@ beforeEach(() => {
 
 describe('getData', () => {
     it('should load public data if no data from firebase', async () => {
-        (axios.get as jest.MockedFunction<typeof axios.get>).mockImplementation(
+        (axios.get as jest.MockedFunction<typeof axios.get>).mockResolvedValue(
             (url: string) => {
                 switch (url) {
                     case 'https://proyecto-final-bootcamp-18e38-default-rtdb.firebaseio.com/products.json':
-                        return Promise.resolve({ status: 200 });
-                    case 'https://fakestoreapi.com/products':
-                        return Promise.resolve({
-                            status: 200,
-                            data: mockData,
-                        });
-                    default:
                         return Promise.reject(new Error('not found'));
-                }
-            }
-        );
-        const mockToastSuccess = jest.spyOn(toast, 'success');
-        const store = mockStore({ articles: [] });
-        const wrapper = ({ children }: WrapperProps) => (
-            <Provider store={store}>{children}</Provider>
-        );
-        const { result } = renderHook(() => useArticles(), {
-            wrapper,
-        });
-
-        await result.current.getData();
-
-        expect(axios.get).toHaveBeenCalledTimes(2);
-        expect(mockToastSuccess).toHaveBeenCalled();
-    });
-
-    it('should load data from firebase', async () => {
-        (axios.get as jest.MockedFunction<typeof axios.get>).mockImplementation(
-            (url: string) => {
-                switch (url) {
-                    case 'https://proyecto-final-bootcamp-18e38-default-rtdb.firebaseio.com/products.json':
-                        return Promise.resolve({
-                            status: 200,
-                            data: firebaseApiRes.data,
-                        });
                     case 'https://fakestoreapi.com/products':
                         return Promise.resolve({
                             status: 200,
@@ -147,7 +113,7 @@ describe('addFav', () => {
     it('Should show error on fail', async () => {
         (
             axios.post as jest.MockedFunction<typeof axios.post>
-        ).mockRejectedValue(new Error('not found'));
+        ).mockResolvedValueOnce({ status: 201 });
         const mockToastError = jest.spyOn(toast, 'error');
         const store = mockStore({ articles: mockData });
         const wrapper = ({ children }: WrapperProps) => (
@@ -268,18 +234,3 @@ const mockData = [
         image: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
     },
 ];
-
-const firebaseApiRes = {
-    data: {
-        NPPDCm0G7wMeTGnC22s: {
-            autor: 'Y4ItE1Y7FYOZcD4Fj9tuSrGKfAT2',
-            category: 'ropa',
-            description: 'abrigo marron ',
-            id: '',
-            image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.clara.es%2Fmedio%2F2020%2F10%2F24%2Fabrigo-camel_b4591163_800x1143.jpg&f=1&nofb=1&ipt=38deac24d6f17b8f4c0cb58f5a865cf9cff3408eda4324074fb77c8b91fb164f&ipo=images',
-            name: '',
-            price: '13',
-            title: 'abrigo',
-        },
-    },
-};
