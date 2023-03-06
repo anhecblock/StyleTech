@@ -35,7 +35,7 @@ export const articulos: Array<Product> = [
     {
         category: 'Cualquiera',
         description: 'Un articulo mÃ¡s',
-        id: '01',
+        id: '03',
         image: gorra,
         price: 55,
         title: 'Gorra',
@@ -44,7 +44,7 @@ export const articulos: Array<Product> = [
     {
         category: 'Cualquiera',
         description: 'Un articulo mÃ¡s',
-        id: '01',
+        id: '04',
         image: abrigo,
         price: 120,
         title: 'abrigo',

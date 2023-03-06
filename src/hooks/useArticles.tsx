@@ -41,7 +41,7 @@ export const useArticles = () => {
                 dispatch(
                     loadArticlesActionCreator({
                         public: data,
-                        private: products as ArticleFromDb[],
+                        private: products,
                     })
                 );
 
@@ -120,11 +120,13 @@ export const useArticles = () => {
                     autor: autor,
                 },
             });
-            console.log(Object.entries(data));
-            const favourites = Object.entries(data).map((object) => ({
-                ...(object[1] as Product),
-                id: object[0],
-            }));
+
+            const favourites = Object.entries(data)
+                .map((object) => ({
+                    ...(object[1] as ArticleFromDb),
+                    id: object[0],
+                }))
+                .filter((favourite) => favourite.autor === autor);
             dispatch(
                 loadFavouritesActionCreator(favourites as ArticleFromDb[])
             );
@@ -135,13 +137,11 @@ export const useArticles = () => {
     const deleteArticle = useCallback(
         async (id: string) => {
             try {
-                const response = await axios.delete(
-                    apiUrlDelete + id + '.json'
-                );
+                await axios.delete(apiUrlDelete + id + '.json');
 
                 dispatch(deleteArticleByIdActionCreator(id));
                 dispatch(deleteFavouriteActionCreator(id));
-                toast.success(response.statusText);
+                toast.success('Article deleted successfully');
             } catch (error) {
                 toast.error('Error delete');
             }
