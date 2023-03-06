@@ -141,7 +141,7 @@ export const useArticles = () => {
 
                 dispatch(deleteArticleByIdActionCreator(id));
                 dispatch(deleteFavouriteActionCreator(id));
-                toast.success('Article deleted succesfully');
+                toast.success('Article deleted successfully');
             } catch (error) {
                 toast.error('Error delete');
             }

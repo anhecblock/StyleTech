@@ -30,7 +30,7 @@ describe('useUser hook', () => {
         expect(dispatch).toHaveBeenCalledWith(logOutUserActionCreator());
         expect(toastSuccessSpy).toHaveBeenCalledWith('Logged out.');
         expect(toastErrorSpy).not.toHaveBeenCalled();
-        expect(useNavigate).toHaveBeenCalled(); // aseguramos que navigate fue llamado en el hook
+        expect(useNavigate).toHaveBeenCalled();
     });
 
     it('should handle error with log out', async () => {
@@ -45,6 +45,6 @@ describe('useUser hook', () => {
         expect(dispatch).toHaveBeenCalledWith(logOutUserActionCreator());
         expect(toastErrorSpy).toHaveBeenCalledWith('Error with the log out.');
         expect(toastSuccessSpy).not.toHaveBeenCalled();
-        expect(useNavigate).toHaveBeenCalled(); // aseguramos que navigate fue llamado en el hook
+        expect(useNavigate).toHaveBeenCalled();
     });
 });
