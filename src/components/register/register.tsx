@@ -26,6 +26,7 @@ const Register = (): JSX.Element => {
                     placeholder="Enter your email"
                     value={user.email}
                     type="email"
+                    autoComplete="off"
                 />
 
                 <label htmlFor="password">Password</label>

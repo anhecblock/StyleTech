@@ -54,6 +54,7 @@ const ArticleForm = (): JSX.Element => {
                     type="text"
                     value={article.image}
                     onChange={handleChange}
+                    autoComplete="off"
                 />
 
                 <label htmlFor="description">Description</label>
@@ -62,6 +63,7 @@ const ArticleForm = (): JSX.Element => {
                     type="text"
                     value={article.description}
                     onChange={handleChange}
+                    autoComplete="off"
                 />
 
                 <label htmlFor="price">Price</label>
@@ -78,6 +80,7 @@ const ArticleForm = (): JSX.Element => {
                     type="text"
                     value={article.category}
                     onChange={handleChange}
+                    autoComplete="off"
                 />
                 <button type="submit">Create</button>
             </form>
