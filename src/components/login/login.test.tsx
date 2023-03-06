@@ -3,7 +3,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { renderWithProviders } from '../../utils/test-utils';
 import { Login } from './login';
 
-// Mocked react router dom
 const mockedUsedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({

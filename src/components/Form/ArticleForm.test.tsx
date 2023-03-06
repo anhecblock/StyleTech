@@ -31,12 +31,10 @@ describe('Article Form', () => {
             }
         );
 
-        // should change Title
         const nameField = screen.getByLabelText('Name');
         fireEvent.change(nameField, { target: { value: 'cap' } });
         expect(nameField).toHaveValue('cap');
 
-        // should change image url
         const imageField = screen.getByLabelText('Image Url');
         fireEvent.change(imageField, {
             target: {
@@ -47,21 +45,18 @@ describe('Article Form', () => {
             'https://www.tfasports.com/image/cache/catalog/products/GorraSnapbackNegraAmarillaBeechfield-1200x1200.jpg'
         );
 
-        // should change Description
         const descField = screen.getByLabelText('Description');
         fireEvent.change(descField, {
             target: { value: 'The best cap on the market' },
         });
         expect(descField).toHaveValue('The best cap on the market');
 
-        // should change Price
         const priceField = screen.getByLabelText('Price');
         fireEvent.change(priceField, {
             target: { value: 100 },
         });
         expect(priceField).toHaveValue(100);
 
-        // should change Cateogry
         const cateogryField = screen.getByLabelText('Cateogry');
         fireEvent.change(cateogryField, {
             target: { value: 'Clothing' },
