@@ -95,39 +95,6 @@ describe('getData', () => {
         expect(axios.get).toHaveBeenCalledTimes(2);
         expect(mockToastSuccess).toHaveBeenCalled();
     });
-    it('should load data', async () => {
-        (axios.get as jest.MockedFunction<typeof axios.get>).mockImplementation(
-            (url: string) => {
-                switch (url) {
-                    case 'https://proyecto-final-bootcamp-18e38-default-rtdb.firebaseio.com/products.json':
-                        return Promise.resolve({
-                            status: 200,
-                            data: firebaseApiRes.data,
-                        });
-                    case 'https://fakestoreapi.com/products':
-                        return Promise.resolve({
-                            status: 200,
-                            data: mockData,
-                        });
-                    default:
-                        return Promise.reject(new Error('not found'));
-                }
-            }
-        );
-        const mockToastSuccess = jest.spyOn(toast, 'success');
-        const store = mockStore({ articles: [] });
-        const wrapper = ({ children }: WrapperProps) => (
-            <Provider store={store}>{children}</Provider>
-        );
-        const { result } = renderHook(() => useArticles(), {
-            wrapper,
-        });
-
-        await result.current.getData();
-
-        expect(axios.get).toHaveBeenCalledTimes(2);
-        expect(mockToastSuccess).toHaveBeenCalled();
-    });
 });
 
 describe('CreateArticle', () => {
