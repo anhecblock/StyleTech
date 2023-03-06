@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react';
 import axios from 'axios';
-import { ReactNode } from 'react';
+import { FunctionComponent, ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
-import configureStore from 'redux-mock-store';
+import configureStore, { MockStore } from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { useArticles } from './useArticles';
 
@@ -32,7 +32,11 @@ const renderUseArticles = (store: ReturnType<typeof mockStore>) => {
 };
 
 describe('getData', () => {
-    it('should load public data if no data from firebase', async () => {
+    let mockToastSuccess: jest.SpyInstance;
+    let store: MockStore;
+    let wrapper: FunctionComponent<WrapperProps>;
+
+    beforeEach(() => {
         (axios.get as jest.MockedFunction<typeof axios.get>).mockImplementation(
             (url: string) => {
                 switch (url) {
@@ -48,20 +52,22 @@ describe('getData', () => {
                 }
             }
         );
-        const mockToastSuccess = jest.spyOn(toast, 'success');
-        const store = mockStore({ articles: [] });
-        const wrapper = ({ children }: WrapperProps) => (
+        mockToastSuccess = jest.spyOn(toast, 'success');
+        store = mockStore({ articles: [] });
+        wrapper = ({ children }: WrapperProps) => (
             <Provider store={store}>{children}</Provider>
         );
+    });
+
+    it('should load public data if no data from firebase', async () => {
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         await result.current.getData();
-
         expect(axios.get).toHaveBeenCalledTimes(2);
         expect(mockToastSuccess).toHaveBeenCalled();
     });
+
     it('should load data from firebase', async () => {
         (axios.get as jest.MockedFunction<typeof axios.get>).mockImplementation(
             (url: string) => {
@@ -81,17 +87,10 @@ describe('getData', () => {
                 }
             }
         );
-        const mockToastSuccess = jest.spyOn(toast, 'success');
-        const store = mockStore({ articles: [] });
-        const wrapper = ({ children }: WrapperProps) => (
-            <Provider store={store}>{children}</Provider>
-        );
         const { result } = renderHook(() => useArticles(), {
             wrapper,
         });
-
         await result.current.getData();
-
         expect(axios.get).toHaveBeenCalledTimes(2);
         expect(mockToastSuccess).toHaveBeenCalled();
     });
